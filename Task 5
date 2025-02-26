@@ -1,0 +1,18 @@
+using System;
+using System.IO;
+
+class CaptainsJournal
+{
+    static void Main()
+    {
+        string date = DateTime.Now.ToString("yyyy-MM-dd"), file = $"{date}.txt", log = $"Captain’s log\nStardate {date}\n";
+        for (bool write = false; ; )
+        {
+            string input = Console.ReadLine();
+            if (input == "start") { write = true; continue; }
+            if (input == "stop") break;
+            if (write) log += input + "\n";
+        }
+        File.WriteAllText(file, log + "Jean-Luc Picard");
+    }
+}
